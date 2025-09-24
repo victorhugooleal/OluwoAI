@@ -1,0 +1,23 @@
+# Ignorar arquivos de dados dos Odus
+256-odus-pdf/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ambiente virtual
+venv/
+.env
+
+# Docker
+*.log
+docker-compose.override.yml
+
+# VSCode
+.vscode/
+
+# Outros
+*.sqlite3
+*.db
