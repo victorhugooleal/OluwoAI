@@ -7,23 +7,6 @@ applyTo: '**'
 
 ---
 
-
-
-## 📑 Sumário
-1. [visao-geral](#1-visao-geral)
-2. [stack-tecnico-sugerido](#2-stack-tecnico-sugerido)
-3. [pipeline-simplificado](#3-pipeline-simplificado)
-4. [estrutura-de-pastas-sugerida](#4-estrutura-de-pastas-sugerida)
-5. [requisitos-e-instalacao](#5-requisitos-e-instalacao)
-6. [implementacao-principal](#6-implementacao-principal)
-7. [uso-da-interface](#7-uso-da-interface)
-8. [otimizacoes-para-poc](#8-otimizacoes-para-poc)
-9. [custos-e-requisitos-de-hardware](#9-custos-e-requisitos-de-hardware)
-10. [proximos-passos-apos-poc](#10-proximos-passos-apos-poc)
-11. [consideracoes-finais](#11-consideracoes-finais)
-
----
-
 ## 1-visao-geral
 POC funcional, zero custo, sem dependências pagas. Demonstra busca semântica e respostas contextualizadas sobre os Odus usando recursos 100% gratuitos/open-source.
 
