@@ -1,3 +1,4 @@
+
 ---
 applyTo: '**'
 ---
@@ -868,3 +869,70 @@ Deploy em cloud
 
 
 Esta POC permite validar todo o conceito sem gastar nada! 🎉
+
+---
+# EXTRAÇÃO E ESTRUTURA DOS TABUS DOS ODUS
+
+## Por que os tabus são importantes?
+Os tabus (proibições, recomendações e restrições) de cada Odu são fundamentais para a consulta, pois orientam o que deve ser evitado ou respeitado para não atrair infortúnios e para alinhar a conduta do consulente com a energia daquele Odu.
+
+## Como identificar tabus nos PDFs
+- Normalmente aparecem em listas, com títulos como "Tabus de [Odu]", "Proibições", "Nunca deve...", "Não pode..." ou frases similares.
+- Podem estar em negrito, sublinhado ou destacados visualmente.
+- Geralmente vêm após os esés, comentários e listas de orixás/profissões.
+
+## Exemplo de bloco de tabus extraído
+```json
+{
+    "tabus": [
+        {
+            "descricao": "Nunca deve duvidar da eficácia de Ifá",
+            "explicacao": "para evitar fortuna consumada."
+        },
+        {
+            "descricao": "Nunca deve consumir herdeiro ou coelho",
+            "explicacao": "para evitar o problema relacionado com gravidez."
+        }
+    ]
+}
+```
+
+## Como armazenar no JSON do Odu
+- O campo `tabus` deve ser uma lista de objetos, cada um com:
+    - `descricao`: a frase do tabu (ex: "Nunca deve consumir herdeiro ou coelho")
+    - `explicacao`: se houver, a explicação do tabu (ex: "para evitar o problema relacionado com gravidez.")
+- Se não houver explicação, pode ser apenas a descrição.
+
+## Recomendações para o parser
+- Priorizar a extração dos tabus como bloco separado.
+- Usar regex para buscar padrões como "Tabus de", "Nunca deve", "Não pode", "Evite", etc.
+- Garantir que o campo `tabus` esteja presente em todos os JSONs dos Odus, mesmo que vazio.
+
+## Exemplo de uso na resposta da IA
+> "Segundo o Odu Iká Ogbè, nunca deve duvidar da eficácia de Ifá, para evitar fortuna consumada."
+
+---
+# PADRÃO DOS PDFs E REGRAS DE EXTRAÇÃO PRIORITÁRIA
+
+## Resumo do padrão dos PDFs
+
+- Cada seção começa com um parágrafo objetivo (explicação prática).
+- Em seguida, aparece o esé Ifá em Yorubá (geralmente centralizado, versos curtos, visualmente destacado).
+- Logo após, vem a tradução/comentário do esé Ifá (em português).
+- No final, aparecem listas: orixás, tabus, profissões, nomes, etc.
+
+## O que é mais importante para a IA
+
+1. O esé Ifá em Yorubá (base para consulta e resposta).
+2. Tradução/comentário do esé Ifá (ajuda a IA a explicar em português).
+3. O parágrafo objetivo (resumo prático).
+4. Listas finais (dados extras para enriquecer a resposta).
+
+## Como podemos melhorar o parser
+
+- Detectar blocos de esé Ifá em Yorubá (ex: linhas centralizadas, sem pontuação, várias linhas curtas).
+- Associar cada esé ao seu comentário/tradução logo abaixo.
+- Extrair listas finais (orixás, tabus, profissões, nomes) usando regex e palavras-chave.
+- Marcar cada chunk com tipo: "ese_ifa", "comentario", "explicacao", "lista_orisas", etc.
+
+---

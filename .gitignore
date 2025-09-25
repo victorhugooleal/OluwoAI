@@ -1,4 +1,7 @@
 # Ignorar arquivos de dados dos Odus
+
+# Não versionar dados sensíveis e PDFs dos Odus
+data/
 256-odus-pdf/
 
 # Python
@@ -8,6 +11,7 @@ __pycache__/
 *.pyd
 
 # Ambiente virtual
+venv311/
 venv/
 .env
 
